@@ -4,7 +4,9 @@ body {
   font-family: "Fira Code", monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #2A2D32;
+  background-image: url('./assets/wallpaper4.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 code {

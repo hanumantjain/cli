@@ -7,7 +7,7 @@ import { FaNetworkWired } from "react-icons/fa";
 const lockscreen = () => {
 
     return (
-        <div className=''>
+        <div className='bg-[#2A2D32] h-screen'>
             <div className=' bg-black text-white flex justify-between p-1'>
                 <div></div>
                 <Time />
