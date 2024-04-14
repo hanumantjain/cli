@@ -5,7 +5,7 @@ import Contact from './pages/contact'
 
 function App() {
   return (
-    <div className="App">
+    <div className="App h-screen">
       <Router>
         <Routes>
           <Route path="/" element={<LockScreen />} />

@@ -7,7 +7,7 @@ import Sidenav from '../components/sidenav'
 const home = () => {
     
   return (
-    <div className='homepage'>
+    <div className='homepage h-screen overflow-hidden'>
         <div className=' bg-black text-white flex justify-between p-1'>
                 <div></div>
                 <Time />
@@ -15,17 +15,18 @@ const home = () => {
                     <FaNetworkWired />
                 </div>
         </div>
-        <div className='flex'>
-            <div className=''>
-                <div className=''>
+
+        <div className='flex h-full'>
+            <div className='flex flex-col justify-between'>
+                <div></div>
                     <Sidenav />
-                </div>
+                <div></div>
             </div>
             
-            <div className=''>
-                <div>
+            <div className='w-full h-full'>
+                
                     <Terminal />
-                </div>
+                
             </div>
         </div>
     </div>
