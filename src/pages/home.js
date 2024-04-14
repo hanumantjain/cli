@@ -17,7 +17,7 @@ const home = () => {
         </div>
 
         <div className='flex h-full'>
-            <div className='flex flex-col justify-between'>
+            <div className='md:flex md:flex-col md:justify-between lg:flex lg:flex-col lg:justify-between hidden'>
                 <div></div>
                     <Sidenav />
                 <div></div>
