@@ -1,28 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-function TerminalInput() {
-    const [input, setInput] = useState('')
-
-    const handleInput = (e) => {
-        setInput(e.target.input)
-    }
-    const handleKeyDown = (e) => {
-        if(e.key === 'Enter')
-        setInput('')
-    }
+const TerminalInput = ({ value, onChange, onKeyDown }) => {
   return (
     <div className='flex gap-3'>
-        <div className=' text-blue-500'>user@kali:~$</div>
-        <input type='text'
-            className='bg-transparent border-none outline-none w-full'
-            placeholder='Enter command'
-            value={input}
-            onChange={handleInput}
-            onKeyDown={handleKeyDown}
-             />
-        
+      <div className='text-blue-500'>user@kali:~$</div>
+      <input
+        type='text'
+        className='bg-transparent border-none outline-none w-full'
+        placeholder='Enter command'
+        value={value}
+        onChange={onChange}
+        onKeyDown={onKeyDown}
+      />
     </div>
   )
 }
-
 export default TerminalInput
