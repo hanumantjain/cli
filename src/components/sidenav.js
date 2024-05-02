@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { FaNetworkWired } from "react-icons/fa"
 import { BsFillTerminalFill } from "react-icons/bs"
+import { IoMdContact } from "react-icons/io";
 
 
 const Sidenav = ({openTerminal}) => {
@@ -21,25 +22,20 @@ const Sidenav = ({openTerminal}) => {
           
           <Link to="/contact" className="hover:text-gray-300">
               <div className='flex flex-col items-center'>
-                <FaNetworkWired className='text-4xl' />
+                <FaNetworkWired className='text-3xl' />
                 Contact
               </div>
           </Link>
           <Link to="/contact" className="hover:text-gray-300">
               <div className='flex flex-col items-center'>
-                <FaNetworkWired className='text-4xl' />
+                <FaNetworkWired className='text-3xl' />
                 Contact
               </div>
           </Link>
-          <Link to="/contact" className="hover:text-gray-300">
+          
+          <Link to="/home" className="hover:text-gray-300">
               <div className='flex flex-col items-center'>
-                <FaNetworkWired className='text-4xl' />
-                Contact
-              </div>
-          </Link>
-          <Link to="/contact" className="hover:text-gray-300">
-              <div className='flex flex-col items-center'>
-                <FaNetworkWired className='text-4xl' />
+                <IoMdContact className='text-3xl' />
                 Contact
               </div>
           </Link>

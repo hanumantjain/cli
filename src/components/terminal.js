@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import Draggable from 'react-draggable'
 import { BsFillTerminalFill } from "react-icons/bs"
 import { MdClose } from "react-icons/md"
@@ -6,6 +6,8 @@ import TerminalInput from './terminalInput'
 
 const Terminal = ({ onClose }) => {
   const [input, setInput] = useState('')
+  const [history, setHistory] = useState([])
+  const terminalRef = useRef(null)
 
   const handleInput = (e) => {
     setInput(e.target.value)
@@ -13,11 +15,26 @@ const Terminal = ({ onClose }) => {
 
   const clearInput = () => {
     setInput('')
+    setHistory([])
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter') setInput('')
-  };
+    if (e.key === 'Enter'){
+      setHistory(prevHistory => [
+        ...prevHistory,
+        <div key={prevHistory.length}>
+          <span className='text-blue-500'>user@kali:~$</span> {input}
+        </div>
+      ])
+      setInput('')
+    }
+  }
+
+  useEffect(() => {
+    if (terminalRef.current) {
+      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+    }
+  }, [history])
 
   return (
     <div className='w-full h-full overflow-hidden relative flex justify-center items-center'>
@@ -42,7 +59,10 @@ const Terminal = ({ onClose }) => {
               </div>
               <div className='cursor-help'>Help</div>
             </div>
-            <div className='flex-1 overflow-auto px-4 py-2'>
+            <div className='flex-1 overflow-auto px-4 py-2' ref={terminalRef}>
+            {history.map((command, index) => (
+                <div key={index} className="text-white">{command}</div>
+              ))}
               <TerminalInput
                 value={input}
                 onChange={handleInput}
