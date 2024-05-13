@@ -4,7 +4,7 @@ import { BsFillTerminalFill } from "react-icons/bs"
 import { MdClose } from "react-icons/md"
 import TerminalInput from './terminalInput'
 
-const Terminal = ({ onClose, placeholder, setPlaceholder }) => {
+const Terminal = ({ onClose }) => {
   const [input, setInput] = useState('')
   const [history, setHistory] = useState([])
   const terminalRef = useRef(null)
@@ -68,8 +68,6 @@ const Terminal = ({ onClose, placeholder, setPlaceholder }) => {
                 value={input}
                 onChange={handleInput}
                 onKeyDown={handleKeyDown}
-                placeholder={placeholder}
-                setPlaceholder={setPlaceholder}
               />
             </div>
           </div>

@@ -6,40 +6,46 @@ import Sidenav from '../components/sidenav'
 
 const Home = () => {
     const [isTerminalClose, setTerminalClose] = useState(true)
-    const [placeholder, setPlaceholder] = useState('Enter command')
+    const [isContact, setIsContact] = useState(false)
+
     const openTerminal = () => {
         setTerminalClose(true)
+        setIsContact(false)
     }
-    const handleContact = () => {
-        setPlaceholder('Enter E-mail')
-    } 
+
+    const openContact = () => {
+        setIsContact(true)
+        
+    }
     
-  return (
-    <div className='homepage h-screen overflow-hidden'>
-        <div className=' bg-black text-white flex justify-between p-1'>
+    return (
+        <div className='homepage h-screen overflow-hidden'>
+            <div className=' bg-black text-white flex justify-between p-1'>
                 <div></div>
                 <Time />
                 <div className='p-1 px-3' >
                     <FaNetworkWired />
                 </div>
-        </div>
+            </div>
 
-        <div className='flex h-full'>
+            <div className='flex h-full'>
                 <div className='md:flex md:flex-col md:justify-between lg:flex lg:flex-col lg:justify-between hidden'>
                     <div></div>
-                        <Sidenav openTerminal={openTerminal} handleContact={handleContact}/>
+                    <Sidenav openTerminal={openTerminal} openContact={openContact} isContact={isContact}/>
                     <div></div>
                 </div>
         
-            <div className='w-full h-full '>
-            { isTerminalClose &&  <Terminal 
-                                    placeholder={placeholder}
-                                    setPlaceholder={setPlaceholder}
-                                    onClose={() => setTerminalClose(false)}/>}
+                <div className='w-full h-full '>
+                    { isTerminalClose &&  
+                        <Terminal 
+                            isContact={isContact}
+                            onClose={() => setTerminalClose(false)}
+                        />
+                    }
+                </div>
             </div>
         </div>
-    </div>
-  )
+    )
 }
 
 export default Home
