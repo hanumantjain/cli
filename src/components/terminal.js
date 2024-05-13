@@ -4,7 +4,7 @@ import { BsFillTerminalFill } from "react-icons/bs"
 import { MdClose } from "react-icons/md"
 import TerminalInput from './terminalInput'
 
-const Terminal = ({ onClose }) => {
+const Terminal = ({ onClose, placeholder, setPlaceholder }) => {
   const [input, setInput] = useState('')
   const [history, setHistory] = useState([])
   const terminalRef = useRef(null)
@@ -37,6 +37,7 @@ const Terminal = ({ onClose }) => {
   }, [history])
 
   return (
+    
     <div className='w-full h-full overflow-hidden relative flex justify-center items-center'>
       <Draggable bounds='parent'>
         <div className='h-full w-full md:w-2/3 md:h-2/3 lg:w-2/3 lg:h-2/3'>
@@ -67,6 +68,8 @@ const Terminal = ({ onClose }) => {
                 value={input}
                 onChange={handleInput}
                 onKeyDown={handleKeyDown}
+                placeholder={placeholder}
+                setPlaceholder={setPlaceholder}
               />
             </div>
           </div>
