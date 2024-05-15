@@ -6,16 +6,22 @@ import Sidenav from '../components/sidenav'
 
 const Home = () => {
     const [isTerminalClose, setTerminalClose] = useState(true)
-    const [isContact, setIsContact] = useState(false)
+    const [selectedOption, setSelectedOption] = useState(null)
 
     const openTerminal = () => {
         setTerminalClose(true)
-        setIsContact(false)
+        setSelectedOption(null)
     }
 
     const openContact = () => {
-        setIsContact(true)
-        
+        setSelectedOption('contact');
+    }
+    
+    const openProjects = () => {
+        setSelectedOption('projects');
+    }
+    const openAbout = () => {
+        setSelectedOption('about')
     }
     
     return (
@@ -31,14 +37,19 @@ const Home = () => {
             <div className='flex h-full'>
                 <div className='md:flex md:flex-col md:justify-between lg:flex lg:flex-col lg:justify-between hidden'>
                     <div></div>
-                    <Sidenav openTerminal={openTerminal} openContact={openContact} isContact={isContact}/>
+                    <Sidenav
+                        openTerminal={openTerminal}
+                        openContact={openContact}
+                        openProjects={openProjects}
+                        openAbout={openAbout}
+                    />
                     <div></div>
                 </div>
         
                 <div className='w-full h-full '>
                     { isTerminalClose &&  
                         <Terminal 
-                            isContact={isContact}
+                            selectedOption={selectedOption}
                             onClose={() => setTerminalClose(false)}
                         />
                     }

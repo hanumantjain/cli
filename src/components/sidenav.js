@@ -2,11 +2,8 @@ import React from 'react'
 import { BsFillTerminalFill } from "react-icons/bs"
 import { IoMdContact } from "react-icons/io"
 
-const Sidenav = ({ openTerminal, openContact }) => {
+const Sidenav = ({ openTerminal, openAbout, openContact, openProjects }) => {
 
-  const handleContact = () => {
-    openContact()
-  }
     return (
         <div className="bg-gray-900 rounded-lg">
             <div className="flex flex-col gap-5  w-24 text-white py-5 ">
@@ -16,8 +13,22 @@ const Sidenav = ({ openTerminal, openContact }) => {
                         <div className='text-sm'>Terminal</div>
                     </div>
                 </div>
+
+                <div onClick={openAbout} className="hover:text-gray-300 cursor-pointer">
+                    <div className='flex flex-col items-center'>
+                        <IoMdContact className='text-3xl' />
+                        <div className='text-sm'>About</div>
+                    </div>
+                </div>
                 
-                <div onClick={handleContact} className="hover:text-gray-300 cursor-pointer">
+                <div onClick={openProjects} className="hover:text-gray-300 cursor-pointer">
+                    <div className='flex flex-col items-center'>
+                        <IoMdContact className='text-3xl' />
+                        <div className='text-sm'>Projects</div>
+                    </div>
+                </div>
+
+                <div onClick={openContact} className="hover:text-gray-300 cursor-pointer">
                     <div className='flex flex-col items-center'>
                         <IoMdContact className='text-3xl' />
                         <div className='text-sm'>Contact</div>
