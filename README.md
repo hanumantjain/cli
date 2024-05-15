@@ -1,2 +1,1 @@
-<pre>
-<b>#Access this project through this</b></pre> [link](https://newcli.netlify.app).
+Access this project through this [link](https://newcli.netlify.app).
