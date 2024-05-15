@@ -20,6 +20,13 @@ const Sidenav = ({ openTerminal, openAbout, openContact, openProjects }) => {
                         <div className='text-sm'>About</div>
                     </div>
                 </div>
+
+                <div onClick={openProjects} className="hover:text-gray-300 cursor-pointer">
+                    <div className='flex flex-col items-center'>
+                        <IoMdContact className='text-3xl' />
+                        <div className='text-sm'>Resume</div>
+                    </div>
+                </div>
                 
                 <div onClick={openProjects} className="hover:text-gray-300 cursor-pointer">
                     <div className='flex flex-col items-center'>

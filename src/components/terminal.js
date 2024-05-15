@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react'
 import Draggable from 'react-draggable'
 import { BsFillTerminalFill } from "react-icons/bs"
-import { MdClose } from "react-icons/md"
+import { MdClose } from 'react-icons/md'
 import TerminalInput from './terminalInput'
+import { handleCommand } from '../utils/commands'
 
 const Terminal = ({ onClose, selectedOption }) => {
   const [input, setInput] = useState('')
@@ -26,13 +27,14 @@ const Terminal = ({ onClose, selectedOption }) => {
           <span className='text-blue-500'>user@kali:~$</span> {input}
         </div>
       ])
+      handleCommand(input, setHistory)
       setInput('')
     }
   }
 
   useEffect(() => {
     if (terminalRef.current) {
-      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+      terminalRef.current.scrollTop = terminalRef.current.scrollHeight
     }
   }, [history])
 
@@ -54,11 +56,15 @@ const Terminal = ({ onClose, selectedOption }) => {
               </div>
             </div>
             <div className='flex items-center gap-8 bg-gray-800 px-4 py-2'>
-              <div className='cursor-pointer'>Files</div>
+              <div className='cursor-pointer'>
+                Files
+              </div>
               <div className='cursor-pointer' onClick={clearInput}>
                 Clear
               </div>
-              <div className='cursor-help'>Help</div>
+              <div className='cursor-help'>
+                Help
+              </div>
             </div>
             <div className='flex-1 overflow-auto px-4 py-2' ref={terminalRef}>
             {history.map((command, index) => (
