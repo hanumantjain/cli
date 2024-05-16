@@ -47,7 +47,7 @@ const Home = () => {
                 </div>
         
                 <div className='w-full h-full '>
-                    { isTerminalClose &&  
+                    { (isTerminalClose) && 
                         <Terminal 
                             selectedOption={selectedOption}
                             onClose={() => setTerminalClose(false)}

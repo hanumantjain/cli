@@ -1,3 +1,6 @@
+import React from 'react'
+import Time from '../components/Time'
+
 export const handleCommand = (input, setHistory) => {
     const command = input.trim()
     const args = command.split(' ')
@@ -34,7 +37,10 @@ export const handleCommand = (input, setHistory) => {
         break
 
       case 'time':
-
+        setHistory((prevHistory) => [
+          ...prevHistory,
+          <div key={prevHistory.length}><Time /></div>,
+        ])
         break
 
       case 'cd':

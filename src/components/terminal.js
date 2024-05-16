@@ -3,6 +3,7 @@ import Draggable from 'react-draggable'
 import { BsFillTerminalFill } from "react-icons/bs"
 import { MdClose } from 'react-icons/md'
 import TerminalInput from './terminalInput'
+import { VscChromeMaximize } from "react-icons/vsc"
 import { handleCommand } from '../utils/commands'
 
 const Terminal = ({ onClose, selectedOption }) => {
@@ -32,6 +33,31 @@ const Terminal = ({ onClose, selectedOption }) => {
     }
   }
 
+  const handleFiles = () => {
+    setInput('ls')
+    setHistory((prevHistory) => [
+      ...prevHistory,
+      <div key={prevHistory.length}>
+        <span className='text-blue-500'>user@kali:~$</span>ls
+      </div>,
+    ])
+    handleCommand('ls', setHistory)
+    setInput('')
+  }
+
+  const handleHelp = () => {
+    setInput('help')
+    setHistory((prevHistory) => [
+      ...prevHistory,
+      <div key={prevHistory.length}>
+        <span className='text-blue-500'>user@kali:~$</span>ls
+      </div>,
+    ])
+    handleCommand('help', setHistory)
+    setInput('')
+  }
+
+
   useEffect(() => {
     if (terminalRef.current) {
       terminalRef.current.scrollTop = terminalRef.current.scrollHeight
@@ -49,20 +75,23 @@ const Terminal = ({ onClose, selectedOption }) => {
                 <BsFillTerminalFill />
               </div>
               <div className='text-sm'>user</div>
-              <div className=' cursor-pointer'>
+              <div className=' cursor-pointer flex gap-1'>
+              <div onClick={onClose}>
+                  <VscChromeMaximize />
+                </div>
                 <div onClick={onClose}>
                   <MdClose />
                 </div>
               </div>
             </div>
             <div className='flex items-center gap-8 bg-gray-800 px-4 py-2'>
-              <div className='cursor-pointer'>
+              <div className='cursor-pointer' onClick={handleFiles}>
                 Files
               </div>
               <div className='cursor-pointer' onClick={clearInput}>
                 Clear
               </div>
-              <div className='cursor-help'>
+              <div className='cursor-help' onClick={handleHelp}>
                 Help
               </div>
             </div>
