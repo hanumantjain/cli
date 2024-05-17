@@ -1,19 +1,21 @@
 import React from 'react'
 import { BsFillTerminalFill } from "react-icons/bs"
+import { GoDotFill } from "react-icons/go"
 import { IoMdContact } from "react-icons/io"
 import { FaFileAlt } from "react-icons/fa"
 import { MdOutlineMailOutline } from "react-icons/md"
 import { GrProjects } from "react-icons/gr"
 
-const Sidenav = ({ openTerminal, openAbout, openContact, openProjects }) => {
+const Sidenav = ({ openTerminal, openAbout, openContact, openProjects, handleMinimize, minimized }) => {
 
     return (
         <div className="bg-gray-900 rounded-lg">
             <div className="flex flex-col gap-5  w-24 text-white py-5 ">
-                <div onClick={openTerminal} className="hover:text-gray-300 cursor-pointer">
+                <div onClick={ () => minimized ? handleMinimize() : openTerminal()} className="hover:text-gray-300 cursor-pointer">
                     <div className='flex flex-col items-center gap-1'>
                         <BsFillTerminalFill className='text-3xl' />
                         <div className='text-sm'>Terminal</div>
+                        {minimized && <div><GoDotFill /></div>}
                     </div>
                 </div>
 

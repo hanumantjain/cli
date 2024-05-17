@@ -7,6 +7,8 @@ import Sidenav from '../components/sidenav'
 const Home = () => {
     const [isTerminalClose, setTerminalClose] = useState(true)
     const [selectedOption, setSelectedOption] = useState(null)
+    const [maximized, setMaximized] = useState(false)
+    const [minimized, setMinimized] = useState(false)
 
     const openTerminal = () => {
         setTerminalClose(true)
@@ -23,11 +25,18 @@ const Home = () => {
     const openAbout = () => {
         setSelectedOption('about')
     }
-    
+
+    const handleMaximize = () => {
+        setMaximized(!maximized)
+    }
+    const handleMinimize = () => {
+        setMinimized(!minimized)
+    }
+
     return (
         <div className='homepage h-screen overflow-hidden'>
             <div className=' bg-black text-white flex justify-between p-1'>
-                <div></div>
+                <div className='text-black' onClick={()=> console.log(window.ethereum)}><FaNetworkWired /></div>
                 <Time />
                 <div className='p-1 px-3' >
                     <FaNetworkWired />
@@ -35,24 +44,32 @@ const Home = () => {
             </div>
 
             <div className='flex h-full'>
-                <div className='md:flex md:flex-col md:justify-between lg:flex lg:flex-col lg:justify-between hidden'>
-                    <div></div>
-                    <Sidenav
-                        openTerminal={openTerminal}
-                        openContact={openContact}
-                        openProjects={openProjects}
-                        openAbout={openAbout}
-                    />
-                    <div></div>
-                </div>
+                {!maximized && (
+                    <div className='md:flex md:flex-col md:justify-between lg:flex lg:flex-col lg:justify-between hidden'>
+                        <div></div>
+                        <Sidenav
+                            openTerminal={openTerminal}
+                            openContact={openContact}
+                            openProjects={openProjects}
+                            openAbout={openAbout}
+                            handleMinimize={handleMinimize}
+                            minimized={minimized}
+                        />
+                        <div></div>
+                    </div>
+                )}
         
-                <div className='w-full h-full '>
-                    { (isTerminalClose) && 
+                <div className='w-full h-full'>
+                    {isTerminalClose && (
                         <Terminal 
                             selectedOption={selectedOption}
                             onClose={() => setTerminalClose(false)}
+                            handleMaximize={handleMaximize}
+                            maximized={maximized}
+                            handleMinimize={handleMinimize}
+                            minimized={minimized}
                         />
-                    }
+                    )}
                 </div>
             </div>
         </div>
