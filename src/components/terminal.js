@@ -11,7 +11,6 @@ const Terminal = ({ onClose, selectedOption, handleMaximize, maximized, handleMi
   const [input, setInput] = useState('')
   const [history, setHistory] = useState([])
   const terminalRef = useRef(null)
-  const inputRef = useRef(null)
   const draggableRef = useRef(null)
 
   const handleInput = (e) => {
@@ -69,17 +68,11 @@ const Terminal = ({ onClose, selectedOption, handleMaximize, maximized, handleMi
     }
   }, [history])
 
-  const isMobile = window.innerWidth <= 768;
-
-  useEffect(() => {
-    if (inputRef.current && !isMobile) {
-      inputRef.current.focus();
-    }
-  }, [isMobile])
+  const isMobile = window.innerWidth <= 768
 
   return (
     <div className={`w-full h-full overflow-hidden relative flex justify-center items-center ${minimized ? 'hidden' : ''}`}>
-      <Draggable bounds='parent' nodeRef={draggableRef}>
+      {isMobile ? (
         <div ref={draggableRef} className={`h-full w-full ${maximized ? 'h-full w-full' : 'h-full w-full md:w-2/3 md:h-2/3 lg:w-2/3 lg:h-2/3'}`}>
           <div className='flex flex-col rounded-xl bg-gray-900 text-white font-mono h-full bg-opacity-40'>
             <div className='flex items-center justify-between bg-gray-800 px-4 py-2'>
@@ -111,7 +104,7 @@ const Terminal = ({ onClose, selectedOption, handleMaximize, maximized, handleMi
               </div>
             </div>
             <div className='flex-1 overflow-auto px-4 py-2' ref={terminalRef}>
-            {history.map((command, index) => (
+              {history.map((command, index) => (
                 <div key={index} className="text-white">{command}</div>
               ))}
               <TerminalInput
@@ -123,9 +116,55 @@ const Terminal = ({ onClose, selectedOption, handleMaximize, maximized, handleMi
             </div>
           </div>
         </div>
-      </Draggable>
+      ) : (
+        <Draggable bounds='parent' nodeRef={draggableRef}>
+          <div ref={draggableRef} className={`h-full w-full ${maximized ? 'h-full w-full' : 'h-full w-full md:w-2/3 md:h-2/3 lg:w-2/3 lg:h-2/3'}`}>
+            <div className='flex flex-col rounded-xl bg-gray-900 text-white font-mono h-full bg-opacity-40'>
+              <div className='flex items-center justify-between bg-gray-800 px-4 py-2'>
+                <div>
+                  <BsFillTerminalFill />
+                </div>
+                <div className='text-sm'>user</div>
+                <div className=' cursor-pointer flex gap-2'>
+                  <div onClick={handleMinimize}>
+                    <VscChromeMinimize />
+                  </div>
+                  <div onClick={handleMaximize}>
+                    <VscChromeMaximize />
+                  </div>
+                  <div onClick={onClose}>
+                    <MdClose />
+                  </div>
+                </div>
+              </div>
+              <div className='flex items-center gap-8 bg-gray-800 px-4 py-2'>
+                <div className='cursor-pointer' onClick={handleFiles}>
+                  Files
+                </div>
+                <div className='cursor-pointer' onClick={clearInput}>
+                  Clear
+                </div>
+                <div className='cursor-help' onClick={handleHelp}>
+                  Help
+                </div>
+              </div>
+              <div className='flex-1 overflow-auto px-4 py-2' ref={terminalRef}>
+                {history.map((command, index) => (
+                  <div key={index} className="text-white">{command}</div>
+                ))}
+                <TerminalInput
+                  value={input}
+                  onChange={handleInput}
+                  onKeyDown={handleKeyDown}
+                  selectedOption={selectedOption}
+                />
+              </div>
+            </div>
+          </div>
+        </Draggable>
+      )}
     </div>
-  );
-};
+  )
+}
 
 export default Terminal

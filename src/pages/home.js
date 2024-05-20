@@ -16,11 +16,11 @@ const Home = () => {
     }
 
     const openContact = () => {
-        setSelectedOption('contact');
+        setSelectedOption('contact')
     }
     
     const openProjects = () => {
-        setSelectedOption('projects');
+        setSelectedOption('projects')
     }
     const openAbout = () => {
         setSelectedOption('about')
@@ -44,6 +44,7 @@ const Home = () => {
             </div>
 
             <div className='flex h-full'>
+                <div></div>
                 {!maximized && (
                     <div className='md:flex md:flex-col md:justify-between lg:flex lg:flex-col lg:justify-between hidden'>
                         <div></div>
