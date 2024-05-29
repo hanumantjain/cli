@@ -14,6 +14,11 @@ const Home = () => {
         setTerminalClose(true)
         setSelectedOption(null)
     }
+     
+    const handleClose = () => {
+        setTerminalClose(false)
+        setMaximized(!maximized)
+    }
 
     const openContact = () => {
         setSelectedOption('contact')
@@ -45,7 +50,8 @@ const Home = () => {
 
             <div className='flex h-full'>
                 <div></div>
-                {!maximized && (
+                {(!maximized || minimized) && (
+                    <div>
                     <div className='md:flex md:flex-col md:justify-between lg:flex lg:flex-col lg:justify-between hidden'>
                         <div></div>
                         <Sidenav
@@ -58,13 +64,32 @@ const Home = () => {
                         />
                         <div></div>
                     </div>
+                    </div>
                 )}
+                
+                <div className='lg:hidden md:hidden'>
+                {(!isTerminalClose) && 
+                    <div className=''>
+                        <div></div>
+                        <Sidenav
+                            openTerminal={openTerminal}
+                            openContact={openContact}
+                            openProjects={openProjects}
+                            openAbout={openAbout}
+                            handleMinimize={handleMinimize}
+                            minimized={minimized}
+                        />
+                        <div></div>
+                    </div>
+                    
+                }
+                </div>
         
                 <div className='w-full h-full'>
                     {isTerminalClose && (
                         <Terminal 
                             selectedOption={selectedOption}
-                            onClose={() => setTerminalClose(false)}
+                            handleClose = {handleClose}
                             handleMaximize={handleMaximize}
                             maximized={maximized}
                             handleMinimize={handleMinimize}

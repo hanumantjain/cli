@@ -7,7 +7,7 @@ import { VscChromeMaximize } from "react-icons/vsc"
 import { VscChromeMinimize } from "react-icons/vsc"
 import { handleCommand } from '../utils/commands'
 
-const Terminal = ({ onClose, selectedOption, handleMaximize, maximized, handleMinimize, minimized }) => {
+const Terminal = ({ handleClose, selectedOption, handleMaximize, maximized, handleMinimize, minimized }) => {
   const [input, setInput] = useState('')
   const [history, setHistory] = useState([])
   const terminalRef = useRef(null)
@@ -84,10 +84,10 @@ const Terminal = ({ onClose, selectedOption, handleMaximize, maximized, handleMi
                 <div onClick={handleMinimize}>
                   <VscChromeMinimize />
                 </div>
-                <div onClick={handleMaximize}>
+                <div className=' cursor-not-allowed'>
                   <VscChromeMaximize />
                 </div>
-                <div onClick={onClose}>
+                <div onClick={handleClose}>
                   <MdClose />
                 </div>
               </div>
@@ -132,7 +132,7 @@ const Terminal = ({ onClose, selectedOption, handleMaximize, maximized, handleMi
                   <div onClick={handleMaximize}>
                     <VscChromeMaximize />
                   </div>
-                  <div onClick={onClose}>
+                  <div onClick={handleClose}>
                     <MdClose />
                   </div>
                 </div>
