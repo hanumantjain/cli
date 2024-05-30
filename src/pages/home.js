@@ -49,9 +49,7 @@ const Home = () => {
             </div>
 
             <div className='flex h-full'>
-                <div></div>
                 {(!maximized || minimized) && (
-                    <div>
                     <div className='md:flex md:flex-col md:justify-between lg:flex lg:flex-col lg:justify-between hidden'>
                         <div></div>
                         <Sidenav
@@ -63,7 +61,6 @@ const Home = () => {
                             minimized={minimized}
                         />
                         <div></div>
-                    </div>
                     </div>
                 )}
                 
