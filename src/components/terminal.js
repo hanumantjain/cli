@@ -81,12 +81,6 @@ const Terminal = ({ handleClose, selectedOption, handleMaximize, maximized, hand
               </div>
               <div className='text-sm'>user</div>
               <div className=' cursor-pointer flex gap-2'>
-                <div onClick={handleMinimize}>
-                  <VscChromeMinimize />
-                </div>
-                <div className=' cursor-not-allowed'>
-                  <VscChromeMaximize />
-                </div>
                 <div onClick={handleClose}>
                   <MdClose />
                 </div>

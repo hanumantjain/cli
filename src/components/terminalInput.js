@@ -15,7 +15,12 @@ const TerminalInput = React.forwardRef(({ value, onChange, onKeyDown, selectedOp
           
         />
       ) : selectedOption === 'about' ? (
-        <div>Hi</div>
+        <div>
+          Hi
+          This is Hanumant Jain
+          MSCS student at George Washington University
+        </div>
+        
       ) : selectedOption === 'projects' ? (
         <input
           type='text'

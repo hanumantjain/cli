@@ -64,7 +64,7 @@ const Home = () => {
                     </div>
                 )}
                 
-                <div className='lg:hidden md:hidden'>
+                {/* <div className='lg:hidden md:hidden'>
                 {(!isTerminalClose) && 
                     <div className=''>
                         <div></div>
@@ -80,7 +80,7 @@ const Home = () => {
                     </div>
                     
                 }
-                </div>
+                </div> */}
         
                 <div className='w-full h-full'>
                     {isTerminalClose && (
