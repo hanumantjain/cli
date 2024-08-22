@@ -16,9 +16,9 @@ const TerminalInput = React.forwardRef(({ value, onChange, onKeyDown, selectedOp
         />
       ) : selectedOption === 'about' ? (
         <div>
-          Hi
-          This is Hanumant Jain
-          MSCS student at George Washington University
+          <p>Hi</p>
+          <p>This is Hanumant Jain</p>
+          <p>MSCS student at George Washington University</p>
         </div>
         
       ) : selectedOption === 'projects' ? (

@@ -17,7 +17,7 @@ const Home = () => {
      
     const handleClose = () => {
         setTerminalClose(false)
-        setMaximized(!maximized)
+        setMaximized(false)
     }
 
     const openContact = () => {
