@@ -1,37 +1,23 @@
 import React from 'react'
+import Contact from './Contact'
+import About from './About'
+
 
 const TerminalInput = React.forwardRef(({ value, onChange, onKeyDown, selectedOption }) => {
   return (
-    <div className='flex gap-3'>
-      <div className='text-blue-500'>user@kali:~$</div>
+    <div>
       {selectedOption === 'contact' ? (
-        <input
-          type='email'
-          className='bg-transparent border-none outline-none w-full'
-          placeholder='Enter your E-mail'
-          value={value}
-          onChange={onChange}
-          onKeyDown={onKeyDown}
-          
-        />
+          <Contact />
       ) : selectedOption === 'about' ? (
-        <div>
-          <p>Hi</p>
-          <p>This is Hanumant Jain</p>
-          <p>MSCS student at George Washington University</p>
-        </div>
+        <About />
         
-      ) : selectedOption === 'projects' ? (
-        <input
-          type='text'
-          className='bg-transparent border-none outline-none w-full h-full'
-          placeholder='Choose Projects'
-          value={value}
-          onChange={onChange}
-          onKeyDown={onKeyDown}
-         
-        />
-      ) : (
+       ) : 
+      //  selectedOption === 'projects' ? (
+
+      // ) : 
+      (
+        <div className='flex gap-3'>
+        <span className="text-blue-500">user@kali:~$</span>
         <input
           type='text'
           className='bg-transparent border-none outline-none w-full h-full'
@@ -41,6 +27,7 @@ const TerminalInput = React.forwardRef(({ value, onChange, onKeyDown, selectedOp
           onKeyDown={onKeyDown}
           
         />
+        </div>
       )}
     </div>
   )
