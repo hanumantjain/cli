@@ -6,7 +6,7 @@ import { FaFileAlt } from "react-icons/fa"
 import { MdOutlineMailOutline } from "react-icons/md"
 import { GrProjects } from "react-icons/gr"
 
-const Sidenav = ({ openTerminal, openAbout, openContact, openProjects, handleMinimize, minimized }) => {
+const Sidenav = ({ openTerminal, openAbout, openContact, openProjects, handleMinimize, minimized, openResume }) => {
 
     return (
         <div className="bg-gray-900 rounded-lg">
@@ -29,7 +29,7 @@ const Sidenav = ({ openTerminal, openAbout, openContact, openProjects, handleMin
                     </div>
                 </div>
 
-                <div onClick={openProjects} className="hover:text-gray-300 cursor-pointer">
+                <div onClick={openResume} className="hover:text-gray-300 cursor-pointer">
                     <div className='flex flex-col items-center'>
                         <FaFileAlt className='text-3xl' />
                         <div className='text-sm'>Resume</div>

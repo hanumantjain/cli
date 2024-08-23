@@ -19,6 +19,9 @@ const Home = () => {
         setTerminalClose(false)
         setMaximized(false)
     }
+    const openResume = () => {
+        setSelectedOption('resume')
+    }
 
     const openContact = () => {
         setSelectedOption('contact')
@@ -55,6 +58,7 @@ const Home = () => {
                         <Sidenav
                             openTerminal={openTerminal}
                             openContact={openContact}
+                            openResume={openResume}
                             openProjects={openProjects}
                             openAbout={openAbout}
                             handleMinimize={handleMinimize}

@@ -100,7 +100,7 @@ const Contact = () => {
         </div>
       )}
 
-      {showMessageInput && <button type="submit">Submit</button>}
+      {showMessageInput && <button type="submit" className="border-b-2">Submit</button>}
 
       {confirmationMessage && (
         <div className="text-green-500">{confirmationMessage}</div>
